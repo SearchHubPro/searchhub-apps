@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SearchHub Mobile Lite - 無料リサーチツール</title>
+<style>
+  /* 全体のベース設定 */
+  body { 
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", Roboto, sans-serif; 
+    margin: 0; 
+    padding: 0; 
+    background-color: #ffffff; 
+    color: #333333; 
+  }
+  .container { max-width: 480px; margin: 0 auto; padding: 20px; }
+
+  /* 1. アプリ情報エリア（ファーストビュー） */
+  .header { display: flex; align-items: flex-start; margin-bottom: 24px; }
+  
+  /* アイコン画像を綺麗に角丸にするスタイル */
+  .app-icon { 
+    width: 104px; height: 104px; 
+    border-radius: 22px; 
+    margin-right: 16px; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+    border: 1px solid #eeeeee;
+    object-fit: cover;
+  }
+  
+  .app-info { flex: 1; padding-top: 4px; }
+  .app-title { font-size: 22px; font-weight: 700; margin: 0 0 4px 0; letter-spacing: -0.5px; }
+  .app-subtitle { font-size: 14px; color: #888888; margin: 0 0 12px 0; }
+  
+  .btn-get { 
+    display: inline-block; 
+    background-color: #007aff; 
+    color: #ffffff; 
+    text-decoration: none; 
+    font-size: 15px; font-weight: bold; 
+    padding: 8px 24px; 
+    border-radius: 20px; 
+    text-align: center; 
+  }
+  .btn-note { font-size: 11px; color: #888888; display: block; margin-top: 6px; }
+
+  /* 2. 説明文エリア */
+  .description { font-size: 15px; line-height: 1.6; color: #333333; margin-bottom: 24px; }
+  .description h2 { font-size: 19px; font-weight: bold; margin-top: 0; margin-bottom: 12px; }
+  .features { margin: 0; padding-left: 20px; color: #555555; }
+  .features li { margin-bottom: 6px; }
+
+  /* ホーム画面追加の案内枠 */
+  .home-screen-note {
+    background-color: #f4f9ff;
+    border-left: 4px solid #007aff;
+    padding: 12px 16px;
+    margin: 0 0 24px 0;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  .home-screen-note strong {
+    color: #007aff;
+  }
+
+  /* 3. スクリーンショットエリア（横スクロール） */
+  .screenshots { 
+    display: flex; overflow-x: auto; gap: 12px; 
+    padding-bottom: 15px; 
+    scroll-snap-type: x mandatory; 
+    -webkit-overflow-scrolling: touch; 
+  }
+  .screenshots::-webkit-scrollbar { display: none; }
+  
+  /* 画像用のスタイル */
+  .screenshot-img { 
+    flex: 0 0 220px; 
+    height: 476px; 
+    border-radius: 18px; 
+    border: 1px solid #e5e5ea; 
+    scroll-snap-align: center;
+    object-fit: cover; 
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  
+  <!-- ファーストビュー -->
+  <div class="header">
+    <!-- いただいたアイコン画像に変更しました！ -->
+    <img src="https://i.ibb.co/DHQQ04BZ/icon.png" alt="SearchHub アイコン" class="app-icon">
+    
+    <div class="app-info">
+      <h1 class="app-title">SearchHub<br>Mobile Lite</h1>
+      <p class="app-subtitle">店舗・電脳対応 自動リサーチツール</p>
+      <!-- ▼ここにご自身のWebアプリのURLを入れてください▼ -->
+      <a href="【WebアプリのURL】" class="btn-get">Webアプリを開く</a>
+      <span class="btn-note">※インストール・登録不要</span>
+    </div>
+  </div>
+
+  <!-- 説明文エリア -->
+  <div class="description">
+    
+    <!-- ホーム画面追加の案内 -->
+    <div class="home-screen-note">
+      💡 <strong>おすすめの使い方</strong><br>
+      ブラウザのメニューから<strong>「ホーム画面に追加」</strong>していただくと、本物のアプリのように全画面でサクサク快適にご利用いただけます！
+    </div>
+
+    <h2>広告で見たツールが、すぐ使えます</h2>
+    <p>動画でご紹介した「Amazonリサーチ」を、今すぐブラウザでお試しいただけます。</p>
+    <p>店舗せどりでも、電脳せどりでも大活躍。面倒な利益計算をスマホ1つで完結させる専用ツールです。</p>
+    <br>
+    <p><strong>【主な特徴】</strong></p>
+    <ul class="features">
+      <li>面倒なアプリのダウンロードは一切不要</li>
+      <li>直感的なAmazonリサーチ機能</li>
+      <li>まずは完全無料で体験可能</li>
+    </ul>
+  </div>
+
+  <!-- 安心感を与えるスクショ画像 -->
+  <div class="screenshots">
+    <img src="https://i.ibb.co/9kbfsjcv/IMG-0003.png" alt="SearchHub リサーチ画面1" class="screenshot-img">
+    <img src="https://i.ibb.co/R42CWJDk/IMG-0005.png" alt="SearchHub リサーチ画面2" class="screenshot-img">
+    <img src="https://i.ibb.co/s8fsZGs/IMG-0006.png" alt="SearchHub リサーチ画面3" class="screenshot-img">
+  </div>
+
+</div>
+</body>
+</html>
