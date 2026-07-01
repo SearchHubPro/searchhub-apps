@@ -78,6 +78,7 @@
   .features-section { font-size: 15px; line-height: 1.6; color: #333333; margin-bottom: 24px; }
   .features { margin: 0 0 24px 0; padding-left: 20px; color: #555555; }
   .features li { margin-bottom: 6px; }
+  .keepa-note { font-size: 12px; color: #e53e3e; font-weight: bold; margin-bottom: 24px; padding-left: 4px; }
 
   /* 全機能解放用の枠とボタン */
   .gift-box {
@@ -149,16 +150,19 @@
 <body>
 <div class="container">
   
+  <!-- ファーストビュー -->
   <div class="header">
     <img src="https://i.ibb.co/DHQQ04BZ/icon.png" alt="SearchHub アイコン" class="app-icon">
     <div class="app-info">
       <h1 class="app-title">SearchHub<br>Mobile Lite</h1>
       <p class="app-subtitle">店舗・電脳対応 自動リサーチツール</p>
-      <a href="【WebアプリのURL】" class="btn-get dl-btn">Webアプリを開く</a>
+      <!-- ▼ リンク先を修正しました！ ▼ -->
+      <a href="https://searchhubpro.github.io/searchhub-mobile-lite/" class="btn-get dl-btn">Webアプリを開く</a>
       <span class="btn-note">※インストール・登録不要</span>
     </div>
   </div>
 
+  <!-- 上部テキストエリア -->
   <div class="description">
     <div class="home-screen-note">
       💡 <strong>おすすめの使い方</strong><br>
@@ -170,12 +174,14 @@
     <p>店舗せどりでも、電脳せどりでも大活躍。面倒な利益計算をスマホ1つで完結させる専用ツールです。</p>
   </div>
 
+  <!-- スクショ画像エリア -->
   <div class="screenshots">
     <img src="https://i.ibb.co/9kbfsjcv/IMG-0003.png" alt="SearchHub リサーチ画面1" class="screenshot-img">
     <img src="https://i.ibb.co/R42CWJDk/IMG-0005.png" alt="SearchHub リサーチ画面2" class="screenshot-img">
     <img src="https://i.ibb.co/s8fsZGs/IMG-0006.png" alt="SearchHub リサーチ画面3" class="screenshot-img">
   </div>
 
+  <!-- 特徴と機能解放エリア（画像の下） -->
   <div class="features-section">
     <p><strong>【主な特徴】</strong></p>
     <ul class="features">
@@ -185,6 +191,7 @@
       <li>本ツールのリサーチ機能にはKeepa APIを使用します</li>
     </ul>
 
+    <!-- 追加機能解放への導線 -->
     <div class="gift-box">
       <h3>🚀 全ての機能を解放しよう！</h3>
       <p>以下の便利な追加機能も、完全無料で使えるようになります。</p>
@@ -198,6 +205,7 @@
       </a>
     </div>
 
+    <!-- カウンター表示エリア -->
     <div style="text-align: center;">
       <div class="counter-box">
         <div title="サイト訪問数" id="count-visit">---,---</div>
@@ -209,6 +217,7 @@
 
 </div>
 
+<!-- カウンター動作用のスクリプト -->
 <script>
     const COUNTER_GAS_URL = "https://script.google.com/macros/s/AKfycbzqAlLUYIiBL3xCmB6iBArALrLxnP6yvtrEHEdpA5L0Up-6pNxKDIE-ZkXf5Mo4sktkdA/exec";
 
