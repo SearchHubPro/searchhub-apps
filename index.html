@@ -15,10 +15,10 @@
         font-family: sans-serif;
     }
 
-    /* スワイプで止まるコンテナ (svh対応) */
+    /* ▼ 修正点1：スクロールエリアをボタンの高さ（約160px）分だけ短くして、被りを完全防止 ▼ */
     .snap-container {
         width: 100%;
-        height: 100svh; 
+        height: calc(100svh - 160px); 
         overflow-y: scroll;
         scroll-snap-type: y mandatory;
         -webkit-overflow-scrolling: touch;
@@ -26,32 +26,29 @@
     }
     
     @supports not (height: 100svh) {
-        .snap-container { height: 100%; }
+        .snap-container { height: calc(100% - 160px); }
     }
     .snap-container::-webkit-scrollbar { display: none; }
 
     /* 1枚の画像エリア */
     .snap-page {
         width: 100%;
-        height: 100svh; 
+        height: 100%; /* コンテナの高さにピッタリ合わせる */
         scroll-snap-align: start;
         scroll-snap-stop: always;
-        /* 下のボタンとカウンターが被らないように余白を確保 */
-        padding-bottom: 160px;
         box-sizing: border-box;
         display: flex;
         justify-content: center;
-        align-items: center;
-    }
-
-    @supports not (height: 100svh) {
-        .snap-page { height: 100%; }
+        /* ▼ 修正点2：画像を上に詰めて、上の5mmの隙間を消す ▼ */
+        align-items: flex-start;
     }
 
     .snap-page img {
         width: 100%;
         height: 100%;
         object-fit: contain; 
+        /* ▼ 修正点3：画像自体の表示位置を「上部中央」に固定 ▼ */
+        object-position: top center;
     }
 
     /* 固定ボタンエリア */
@@ -60,9 +57,10 @@
         bottom: 0;
         left: 0;
         width: 100%;
+        height: 160px; /* 高さを固定して計算を安定させる */
         background-color: #ffffff;
         box-shadow: 0 -2px 10px rgba(0,0,0,0.08);
-        padding: 15px 20px 20px;
+        padding: 15px 20px 25px;
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
@@ -98,19 +96,6 @@
         color: #ffffff;
         border: 2px solid #1a5c7a;
     }
-
-    /* ▼ カウンター用デザイン ▼ */
-    .counter-box { 
-        display: inline-flex; 
-        border: 1px solid #e2e8f0; 
-        border-radius: 4px; 
-        font-family: 'Courier New', monospace; 
-        font-size: 11px; 
-        color: #a0aec0; 
-        background: #f8fafc; 
-    }
-    .counter-box div { padding: 4px 8px; }
-    .counter-box div:first-child { border-right: 1px solid #e2e8f0; }
 </style>
 </head>
 <body>
@@ -127,13 +112,6 @@
 <div class="fixed-bottom">
     <a href="https://searchhubpro.github.io/searchhub-mobile-lite/" class="btn btn-outline dl-btn">無料ダウンロード</a>
     <a href="https://line.me/R/ti/p/@561rubmr?oat_content=url&ts=05162137" class="btn btn-solid">お問い合わせはこちら</a>
-    
-    <div style="text-align: center; margin-top: 4px;">
-        <div class="counter-box">
-            <div title="サイト訪問数" id="count-visit">---,---</div>
-            <div title="アプリ起動数" id="count-dl">---,---</div>
-        </div>
-    </div>
 </div>
 
 <script>
@@ -141,18 +119,9 @@
 
     window.addEventListener('DOMContentLoaded', () => {
         if(COUNTER_GAS_URL.includes("【")) return;
-        fetch(COUNTER_GAS_URL + "?action=visit")
-            .then(r => r.json())
-            .then(d => updateCounterUI(d.visits, d.downloads))
-            .catch(e => console.log("Counter Error", e));
+        fetch(COUNTER_GAS_URL + "?action=visit").catch(e => console.log("Counter Error", e));
     });
 
-    function updateCounterUI(v, d) {
-        if(document.getElementById('count-visit')) document.getElementById('count-visit').innerText = String(v).padStart(5, '0').replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-        if(document.getElementById('count-dl')) document.getElementById('count-dl').innerText = String(d).padStart(5, '0').replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    }
-
-    // 「無料ダウンロード」ボタンを押した時にダウンロード（起動数）としてカウント
     document.querySelector('.dl-btn')?.addEventListener('click', () => {
         if(!COUNTER_GAS_URL.includes("【")) fetch(COUNTER_GAS_URL + "?action=download").catch(e=>{});
     });
